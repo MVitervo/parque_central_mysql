@@ -11,16 +11,16 @@
     <title>Parque central || Dashboard</title>
 
      <!-- google icons -->
-    <link rel="stylesheet" href="assets/css/iconfont/material-icons.css">
-    <link rel="stylesheet" href="assets/css/dataTables.dataTables.min.css">
-    <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/css/iconfont/material-icons.css">
+    <link rel="stylesheet" href="/assets/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/css/responsive.dataTables.min.css">
 
     <!--! BEGIN: Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css" />
     <!-- <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" /> -->
-    <link rel="stylesheet" type="text/css" href="assets/css/theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/theme.min.css" />
     
 </head>
 
@@ -322,16 +322,20 @@
     </div> -->
 
     <!-- jQuery primero (para DataTables y vendors) -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
     <!-- Vendors (plantilla) -->
-    <script src="assets/vendors/js/vendors.min.js"></script>
+    <script src="/assets/vendors/js/vendors.min.js"></script>
 
     <!-- DataTables -->
-    <script src="node_modules/datatables.net/js/dataTables.min.js"></script>
+    <script src="/node_modules/datatables.net/js/dataTables.min.js"></script>
 
     <!-- Bootstrap 5 SIEMPRE AL FINAL -->
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <?php include 'templates/alerts.php'; ?>
 
 </body>
 

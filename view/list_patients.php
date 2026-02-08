@@ -25,7 +25,6 @@
 </div>
 
 
-
 <script>
     $(document).ready(function() {
         tabla();
@@ -106,10 +105,8 @@
 
     function deletePatient(id) {
         Swal.fire({
-            template: '#question_template',
-            title: "Eliminar Registro",
-            html: '<label style="font-size:24px; font-weigth:bolder">El registro se eliminará de forma permanente, ¿Desea continuar?</label>',
-            reverseButtons: true,
+            template: '#warning-template',
+              reverseButtons: true,
               confirmButtonText: "Sí, eliminar",
             showCancelButton: true
         }).then((action) => {

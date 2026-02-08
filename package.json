@@ -6,6 +6,7 @@
     "datatables.net-responsive": "^3.0.8",
     "datatables.net-responsive-dt": "^3.0.8",
     "jquery": "^3.7.1",
-    "material-icons": "^1.13.14"
+    "material-icons": "^1.13.14",
+    "sweetalert2": "^11.26.18"
   }
 }
