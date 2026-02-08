@@ -18,3 +18,6 @@
     <input type="text" class="form-control" id="txtRfc" name="txtRfc" style="max-width: none;" required autocomplete="off">
 </div>
 
+<script>
+    
+</script>
