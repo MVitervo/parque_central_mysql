@@ -384,7 +384,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary closeModal" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" onclick="savePatient()">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
             </form>
@@ -396,6 +396,7 @@
 <script>
     $(document).ready(function() {
         listPatients();
+        savePatient(); 
     });
 
     function searchData() {
@@ -434,7 +435,7 @@
             const formData = new FormData(form);
             $.ajax({
                 type: 'POST',
-                url: '/controllers/add_patients_controller.php',
+                url: 'controllers/add_patients_controller.php',
                 data: formData,
                 processData: false,
                 contentType: false,
