@@ -8,18 +8,18 @@ $id = $_POST['id'] ?? null;
 try {
     $conn->beginTransaction();
 
- $deletePatients = $conn->prepare("DELETE FROM Patients_tbl WHERE id = :id");
+    $deletePatients = $conn->prepare("DELETE FROM Patients_tbl WHERE id = :id");
 
- $deletePatients->bindParam(':id', $id, PDO::PARAM_INT);
- 
-$deletePatients->execute();
-$conn->commit();
+    $deletePatients->bindParam(':id', $id, PDO::PARAM_INT);
 
-echo json_encode(['status'=>true, 'message'=>"Eliminado correctamente"]);
+    $deletePatients->execute();
+    $conn->commit();
+
+    echo json_encode(['status'=>true, 'message'=>"Eliminado correctamente"]);
     
 } catch (PDOException $e) {
     $conn->rollBack();
-echo json_encode(['status'=>false, 'message'=>"Error de base de datos ".$e->getMessage()]);
+    echo json_encode(['status'=>false, 'message'=>"Error de base de datos ".$e->getMessage()]);
 }
 
 

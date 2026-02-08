@@ -20,7 +20,7 @@
         </tbody>
     </table>
 </div>
-<div id="form_section">
+<div id="sectionForm">
 
 </div>
 
@@ -76,7 +76,8 @@
             }
         });
     }
-
+    
+    /*
     function addPatientForm() {
         $.ajax({
             url: 'view/forms/add_patient.php',
@@ -87,7 +88,21 @@
             }
         });
     }
+    */
 
+    function editPatient (id) {
+        $.ajax({
+            url: '/view/edit_patient.php',
+            method: 'POST',
+            data: {
+                id: id
+            },
+            success: function(response) {
+                $('#sectionListPatients').hide();
+                $('#sectionForm').html(response).fadeIn();
+            }
+        });
+    }
 
     function deletePatient(id) {
         Swal.fire({

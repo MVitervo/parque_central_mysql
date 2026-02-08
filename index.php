@@ -14,17 +14,14 @@
     <link rel="stylesheet" href="assets/css/iconfont/material-icons.css">
     <link rel="stylesheet" href="assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
-   
 
     <!--! BEGIN: Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css" />
     <!-- <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="assets/css/theme.min.css" />
     
-    
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -45,6 +42,7 @@
                         <label>Menu</label>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
+                        
                         <a href="index.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Historial</span>

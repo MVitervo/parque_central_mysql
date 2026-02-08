@@ -1,19 +1,20 @@
 
 <div>
-    <label for="name" class="form-label">Nombre:</label>
-    <input type="text" name="name" class="form-control" id="name">
+    <label for="strName" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="txtName" name="txtName" style="max-width: none;" required autocomplete="off">
 </div>
 <div>
-    <label for="first_surname" class="form-label">Apellido:</label>
-    <input type="first_surname" name="first_surname" class="form-control" id="first_surname">
+    <label for="txtLastname" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="txtLastname" name="txtLastname" style="max-width: none;" required autocomplete="off">
 </div>
 
 <div>
-    <label for="curp" class="form-label">CURP:</label>
-    <input type="text" name="curp" class="form-control" id="curp">
+    <label for="txtCurp" class="form-label">CURP</label>
+    <input type="text" class="form-control" id="txtCurp" name="txtCurp" style="max-width: none;" required autocomplete="off">
 </div>
 
 <div>
-    <label for="rfc" class="form-label">RFC:</label>
-    <input type="text" name="rfc" class="form-control"  id="rfc">
+    <label for="txtRfc" class="form-label">RFC</label>
+    <input type="text" class="form-control" id="txtRfc" name="txtRfc" style="max-width: none;" required autocomplete="off">
 </div>
+
