@@ -340,7 +340,7 @@
 </html>
 
 <!-- Modal || BEGIN -->
-<div class="modal fade templateModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+<div class="modal fade modalAddPatient" id="modalAddPatient" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
     <!-- la etiqueta data-bs-backdrop es para que al dar click fuera del modal no se cierre -->
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -350,25 +350,44 @@
             </div>
             <div class="modal-body">
 
-                <div class="modal-body g-3">
-                    <!-- El g-3 sirve para que siempre sean tres columnas y sea responsivo -->
-                    <input type="hidden" class="form-control" id="txtId" value="0">
-                    <div class="row">
-
-                        <div class="col-sm-8" style="margin-bottom: 10px;">
-                            <!-- el sm es para que la columna sea pequeña -->
-                            <label for="txtNombreCompleto" class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" id="txtNombreCompleto" style="max-width: none;" autocomplete="off">
+                <form id="addPatient">
+                    <div class="modal-body g-2">
+                        <!-- El g-2 sirve para que siempre sean tres columnas y sea responsivo -->
+                            <input type="hidden" class="form-control" id="txtId" value="0" name="intId">
+                            <div class="row">
+        
+                                <div class="col-sm" style="margin-bottom: 10px;">
+                                    <!-- el sm es para que la columna sea pequeña -->
+                                    <label for="txtName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="txtName" name="txtName" style="max-width: none;" required autocomplete="off">
+                                </div>
+        
+                                <div class="col-sm" style="margin-bottom: 10px;">
+                                    <!-- el sm es para que la columna sea pequeña -->
+                                    <label for="txtLastname" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="txtLastname" name="txtLastname" style="max-width: none;" required autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm" style="margin-bottom: 10px;">
+                                    <!-- el sm es para que la columna sea pequeña -->
+                                    <label for="txtCurp" class="form-label">CURP</label>
+                                    <input type="text" class="form-control" id="txtCurp" name="txtCurp" style="max-width: none;" required autocomplete="off">
+                                </div>
+            
+                                <div class="col-sm" style="margin-bottom: 10px;">
+                                    <!-- el sm es para que la columna sea pequeña -->
+                                    <label for="txtRfc" class="form-label">RFC</label>
+                                    <input type="text" class="form-control" id="txtRfc" name="txtRfc" style="max-width: none;" required autocomplete="off">
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary closeModal" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" onclick="savePatient()">Guardar</button>
+                        </div>
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarPaciente()">Guardar</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -379,8 +398,12 @@
         listPatients();
     });
 
+    function searchData() {
+        $('#tableListPatients').DataTable().ajax.reload(null, false);
+    }
+
     function showModal() {
-        $('.templateModal').modal('show');
+        $('#modalAddPatient').modal('show');
     }
 
     function listPatients() {
@@ -390,6 +413,60 @@
             success: function(respuesta) {
                 $('.principalContent').html(respuesta);
             }
+        });
+    }
+
+    function savePatient() {
+        const form = $('#addPatient')[0];
+        $(form).on('submit', function(event) {
+            event.preventDefault();
+            
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                $(form).addClass('was-validated');
+                Swal.fire({
+                    template: '#warning_template',
+                    title: "Campos Vacíos!",
+                    text: "Por favor, complete todos los campos requeridos",
+                });
+                return;
+            }
+            const formData = new FormData(form);
+            $.ajax({
+                type: 'POST',
+                url: '/controllers/add_patients_controller.php',
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status == true) {
+                        $('.closeModal').click();
+                        Swal.fire({
+                            template: '#success_template',
+                            title: "Persona registrada!",
+                            html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
+                        }).then(() => {
+                            // $('#form_section').hide();
+                            // $('#sectionListPatients').show();
+                            searchData();
+                        });
+                    } else if (response.status == false) {
+                        Swal.fire({
+                            template: '#error_template',
+                            title: "Oops!",
+                            html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
+                        });
+                    }
+                },
+                error: function(error) {
+                    Swal.fire({
+                        template: '#error_template',
+                        title: "Oops!",
+                        html: '<label style="font-size:24px; font-weight:bold">Hubo un error en la solicitud</label>',
+                    });
+                }
+            });
         });
     }
 </script>

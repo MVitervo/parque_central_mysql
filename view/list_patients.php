@@ -1,7 +1,7 @@
 <div id="sectionListPatients">
     <div class="d-flex justify-content-center">
         <!-- <button class="btn btn-success col-12 col-md-3 col-lg-md-2" onclick="addPatientForm()">Agregar</button> -->
-        <button type="button" class="btn btn-primary" onclick="showModal()">
+        <button type="button" class="btn btn-success" onclick="showModal()">
             Agregar
         </button>
     </div>
@@ -31,9 +31,7 @@
         tabla();
     });
 
-    function searchData() {
-        $('#tableListPatients').DataTable().ajax.reload(null, false);
-    }
+    
 
     function tabla() {
         $('#tableListPatients').DataTable({

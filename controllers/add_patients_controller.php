@@ -3,10 +3,10 @@
 header('Content-Type: application/json');
 require_once __DIR__ . '/../connection.php';
 
-$name = $_POST['name'] ?? null;
-$first_surname = $_POST['first_surname'] ?? null;
-$curp = $_POST['curp'] ?? null;
-$rfc = $_POST['rfc'] ?? null;
+$name = $_POST['txtName'] ?? null;
+$first_surname = $_POST['txtLastname'] ?? null;
+$curp = $_POST['txtCurp'] ?? null;
+$rfc = $_POST['txtRfc'] ?? null;
 
 try {
     $conn->beginTransaction();
