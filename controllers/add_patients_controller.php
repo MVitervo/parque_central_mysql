@@ -24,7 +24,9 @@ try {
     
 } catch (PDOException $e) {
     $conn->rollBack();
-echo json_encode(['status'=>false, 'message'=>"Error de base de datos ".$e->getMessage()]);
+    echo json_encode(['status'=>false, 'message'=>"Error de base de datos ".$e->getMessage()]);
+} finally {
+    $conn = null;
 }
 
 
