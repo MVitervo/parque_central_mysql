@@ -8,37 +8,23 @@
     <meta name="description" content="" />
     <meta name="keyword" content="" />
     <meta name="author" content="flexilecode" />
-    <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
-    <!--! BEGIN: Apps Title-->
     <title>Parque central || Dashboard</title>
 
      <!-- google icons -->
     <link rel="stylesheet" href="assets/css/iconfont/material-icons.css">
-    <!--! END:  Apps Title-->
-    <!-- styles for datatable -->
     <link rel="stylesheet" href="assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
    
 
     <!--! BEGIN: Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <!--! END: Favicon-->
-    <!--! BEGIN: Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <!--! END: Bootstrap CSS-->
-    <!--! BEGIN: Vendors CSS-->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" />
-    <!--! END: Vendors CSS-->
-    <!--! BEGIN: Custom CSS-->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="assets/css/theme.min.css" />
-    <!--! END: Custom CSS-->
-    <!--! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries !-->
-    <!--! WARNING: Respond.js doesn"t work if you view the page via file: !-->
-    <!--[if lt IE 9]>
-			<script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+    
+    
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -153,8 +139,8 @@
                 <div class="row">
                     <div class="container-general__contenido shadow-sm mt-4 p-3 rounded">
                         <div class="container-fluid cont-of-y">
-                            <div id="" class="contenido-tab tab-1 mt-3"></div>
-                            <div id="" class="contenido-tab tab-2 "></div>
+                            <div class="contenido-tab mt-3 principalContent"></div>
+                            <!-- <div class="contenido-tab tab-2 "></div> -->
                         </div>
                     </div>
 
@@ -336,60 +322,73 @@
             </div>
         </div>
     </div> -->
-    <!--! ================================================================ !-->
-    <!--! [End] Theme Customizer !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! Footer Script !-->
-    <!--! ================================================================ !-->
-    <!--! BEGIN: Vendors JS !-->
-    <script src="assets/vendors/js/vendors.min.js"></script>
-    <!-- vendors.min.js {always must need to be top} -->
-    <script src="assets/vendors/js/daterangepicker.min.js"></script>
-    <script src="assets/vendors/js/apexcharts.min.js"></script>
-    <script src="assets/vendors/js/circle-progress.min.js"></script>
-    <!--! END: Vendors JS !-->
-    <!--! BEGIN: Apps Init  !-->
-    <script src="assets/js/common-init.min.js"></script>
-    <script src="assets/js/dashboard-init.min.js"></script>
-    <!--! END: Apps Init !-->
-    <!--! BEGIN: Theme Customizer  !-->
-    <script src="assets/js/theme-customizer-init.min.js"></script>
-    <!--! END: Theme Customizer !-->
-    <!-- jquery y datatable -->
 
-
+    <!-- jQuery primero (para DataTables y vendors) -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Vendors (plantilla) -->
+    <script src="assets/vendors/js/vendors.min.js"></script>
+
+    <!-- DataTables -->
     <script src="node_modules/datatables.net/js/dataTables.min.js"></script>
-    <script src="node_modules/dataTables.responsive.min.js"></script>
+
+    <!-- Bootstrap 5 SIEMPRE AL FINAL -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
 
+<!-- Modal || BEGIN -->
+<div class="modal fade templateModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+    <!-- la etiqueta data-bs-backdrop es para que al dar click fuera del modal no se cierre -->
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nuevo Paciente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<!-- jQuery -->
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+                <div class="modal-body g-3">
+                    <!-- El g-3 sirve para que siempre sean tres columnas y sea responsivo -->
+                    <input type="hidden" class="form-control" id="txtId" value="0">
+                    <div class="row">
 
-<!-- DataTables core -->
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script> -->
+                        <div class="col-sm-8" style="margin-bottom: 10px;">
+                            <!-- el sm es para que la columna sea pequeña -->
+                            <label for="txtNombreCompleto" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="txtNombreCompleto" style="max-width: none;" autocomplete="off">
+                        </div>
 
-<!-- Responsive (DESPUÉS del core) -->
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script> -->
+                    </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarPaciente()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal || END -->
 
 <script>
     $(document).ready(function() {
         listPatients();
     });
 
+    function showModal() {
+        $('.templateModal').modal('show');
+    }
+
     function listPatients() {
         $.ajax({
             method: 'GET',
             url: 'view/list_patients.php',
             success: function(respuesta) {
-                $('.tab-1').html(respuesta);
+                $('.principalContent').html(respuesta);
             }
         });
     }

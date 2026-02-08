@@ -6,7 +6,9 @@ require_once __DIR__ . '/../connection.php';
 $response = array();
 
 try {
-    $queryGetPatients = $conn->prepare("SELECT * FROM Patients_tbl ORDER BY id DESC");
+    $queryGetPatients = $conn->prepare(
+        "SELECT * FROM Patients_tbl ORDER BY Id DESC"
+    );
 
     $queryGetPatients->execute();
     
@@ -23,7 +25,9 @@ try {
         $response[] = $row;
     }
 } catch (PDOException $e) {
-    die("Error: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+    exit;
 }
 
 echo json_encode($response);

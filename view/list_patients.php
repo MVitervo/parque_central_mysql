@@ -1,6 +1,9 @@
 <div id="sectionListPatients">
     <div class="d-flex justify-content-center">
-        <button class="btn btn-success col-12 col-md-3 col-lg-md-2" onclick="addPatientForm()">Agregar</button>
+        <!-- <button class="btn btn-success col-12 col-md-3 col-lg-md-2" onclick="addPatientForm()">Agregar</button> -->
+        <button type="button" class="btn btn-primary" onclick="showModal()">
+            Agregar
+        </button>
     </div>
 
     <table id="tableListPatients" class="table table-striped table-hover table-responsive" style="width:100%">
@@ -21,9 +24,10 @@
 
 </div>
 
+
+
 <script>
     $(document).ready(function() {
-        console.log(jQuery.fn.jquery);
         tabla();
     });
 
