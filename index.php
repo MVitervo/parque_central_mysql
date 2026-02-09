@@ -18,7 +18,7 @@
     <!--! BEGIN: Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css" /> 
     <!-- <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="/assets/css/theme.min.css" />
 
@@ -30,10 +30,10 @@
     <!--! ================================================================ !-->
     <nav class="nxl-navigation">
         <div class="navbar-wrapper">
-            <div class="m-header">
+            <div class="m-0">
                 <a href="index.php" class="b-brand">
                     <!-- ========   change your logo hear   ============ -->
-                    <h3>Parque central</h3>
+             <img src="/assets/images/logo/logo.jpg" alt="Logo" width="280" height="180"/>
                 </a>
             </div>
             <div class="navbar-content">
