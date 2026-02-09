@@ -10,7 +10,7 @@
     <meta name="author" content="flexilecode" />
     <title>Parque central || Dashboard</title>
 
-     <!-- google icons -->
+    <!-- google icons -->
     <link rel="stylesheet" href="/assets/css/iconfont/material-icons.css">
     <link rel="stylesheet" href="/assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="/assets/css/responsive.dataTables.min.css">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css" />
     <!-- <link rel="stylesheet" type="text/css" href="assets/vendors/css/daterangepicker.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="/assets/css/theme.min.css" />
-    
+
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                         <label>Menu</label>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        
+
                         <a href="index.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Historial</span>
@@ -128,9 +128,15 @@
     <main class="nxl-container">
         <div class="nxl-content card">
             <!-- [ page-header ] start -->
-            <div class="page-header d-flex justify-content-end card-header">
-                      <button class="btn btn-primary col-12 col-md-2" onclick="listPatients()">Listar</button>
+            <div class="d-flex justify-content-between page-header card-header">
+         
+                    <button class="btn btn-secondary" onclick="listPatients()"><span style="cursor: pointer;"
+                     class="material-icons edit-btn text-white">filter_list</span></button>
+
+                    <button class="btn btn-primary col-12 col-md-2" onclick="listPatients()">Listar</button>
+         
             </div>
+
             <!-- [ page-header ] end -->
             <!-- [ Main Content ] start -->
             <div class="main-content card-body">
@@ -338,28 +344,28 @@
     <?php include 'templates/alerts.php'; ?>
 
     <!-- Modal || BEGIN -->
-<div class="modal fade modalAddPatient" id="modalAddPatient" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
-    <!-- la etiqueta data-bs-backdrop es para que al dar click fuera del modal no se cierre -->
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Nuevo Paciente</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+    <div class="modal fade modalAddPatient" id="modalAddPatient" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+        <!-- la etiqueta data-bs-backdrop es para que al dar click fuera del modal no se cierre -->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-                <form id="addPatient" class="needs-validation" novalidate>
-                    <div class="modal-body g-2">
-                        <!-- El g-2 sirve para que siempre sean tres columnas y sea responsivo -->
+                    <form id="addPatient" class="needs-validation" novalidate>
+                        <div class="modal-body g-2">
+                            <!-- El g-2 sirve para que siempre sean tres columnas y sea responsivo -->
                             <input type="hidden" class="form-control" id="txtId" value="0" name="intId">
                             <div class="row">
-        
+
                                 <div class="col-sm" style="margin-bottom: 10px;">
                                     <!-- el sm es para que la columna sea pequeña -->
                                     <label for="txtName" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="txtName" name="txtName" style="max-width: none;" required autocomplete="off">
                                 </div>
-        
+
                                 <div class="col-sm" style="margin-bottom: 10px;">
                                     <!-- el sm es para que la columna sea pequeña -->
                                     <label for="txtLastname" class="form-label">Apellido</label>
@@ -372,7 +378,7 @@
                                     <label for="txtCurp" class="form-label">CURP</label>
                                     <input type="text" class="form-control" id="txtCurp" name="txtCurp" style="max-width: none;" required autocomplete="off">
                                 </div>
-            
+
                                 <div class="col-sm" style="margin-bottom: 10px;">
                                     <!-- el sm es para que la columna sea pequeña -->
                                     <label for="txtRfc" class="form-label">RFC</label>
@@ -384,12 +390,12 @@
                             <button type="button" class="btn btn-secondary closeModal" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
-                    </div>
-            </form>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!-- Modal || END -->
+    <!-- Modal || END -->
 
 </body>
 
@@ -400,7 +406,7 @@
 <script>
     $(document).ready(function() {
         listPatients();
-        savePatient(); 
+        savePatient();
     });
 
     function searchData() {
@@ -423,13 +429,13 @@
 
     function savePatient() {
         const form = $('#addPatient')[0];
-    
+
         $(form).on('submit', function(event) {
             console.log("entro a la funcion")
             event.preventDefault();
- 
+
             if (!form.checkValidity()) {
-                   console.log("campo ombliagoio")
+                console.log("campo ombliagoio")
                 event.stopPropagation();
                 $(form).addClass('was-validated');
                 Swal.fire({
