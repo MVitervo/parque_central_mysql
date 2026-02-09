@@ -337,11 +337,7 @@
 
     <?php include 'templates/alerts.php'; ?>
 
-</body>
-
-</html>
-
-<!-- Modal || BEGIN -->
+    <!-- Modal || BEGIN -->
 <div class="modal fade modalAddPatient" id="modalAddPatient" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
     <!-- la etiqueta data-bs-backdrop es para que al dar click fuera del modal no se cierre -->
     <div class="modal-dialog modal-lg">
@@ -352,7 +348,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="addPatient">
+                <form id="addPatient" class="needs-validation" novalidate>
                     <div class="modal-body g-2">
                         <!-- El g-2 sirve para que siempre sean tres columnas y sea responsivo -->
                             <input type="hidden" class="form-control" id="txtId" value="0" name="intId">
@@ -395,6 +391,12 @@
 </div>
 <!-- Modal || END -->
 
+</body>
+
+</html>
+
+
+
 <script>
     $(document).ready(function() {
         listPatients();
@@ -421,19 +423,23 @@
 
     function savePatient() {
         const form = $('#addPatient')[0];
+    
         $(form).on('submit', function(event) {
+            console.log("entro a la funcion")
             event.preventDefault();
-            
+ 
             if (!form.checkValidity()) {
+                   console.log("campo ombliagoio")
                 event.stopPropagation();
                 $(form).addClass('was-validated');
                 Swal.fire({
-                    template: '#warning_template',
+                    template: '#warning-template',
                     title: "Campos Vacíos!",
                     text: "Por favor, complete todos los campos requeridos",
                 });
                 return;
             }
+            console.log("paso validacion")
             const formData = new FormData(form);
             $.ajax({
                 type: 'POST',
@@ -446,7 +452,7 @@
                     if (response.status == true) {
                         $('.closeModal').click();
                         Swal.fire({
-                            template: '#success_template',
+                            template: '#success-template',
                             title: "Persona registrada!",
                             html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                         }).then(() => {
@@ -456,7 +462,7 @@
                         });
                     } else if (response.status == false) {
                         Swal.fire({
-                            template: '#error_template',
+                            template: '#error-template',
                             title: "Oops!",
                             html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                         });
@@ -464,7 +470,7 @@
                 },
                 error: function(error) {
                     Swal.fire({
-                        template: '#error_template',
+                        template: '#error-template',
                         title: "Oops!",
                         html: '<label style="font-size:24px; font-weight:bold">Hubo un error en la solicitud</label>',
                     });

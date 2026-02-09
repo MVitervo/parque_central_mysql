@@ -106,6 +106,8 @@
     function deletePatient(id) {
         Swal.fire({
             template: '#warning-template',
+            title: "Eliminar?",
+            text: "¿Estás seguro de eliminar este paciente?",
               reverseButtons: true,
               confirmButtonText: "Sí, eliminar",
             showCancelButton: true
@@ -120,7 +122,7 @@
                     success: function(response) {
                         if (response.status == true) {
                             Swal.fire({
-                                template: '#success_template',
+                                template: '#success-template',
                                 title: "Eliminado!",
                                 html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                             }).then(() => {
@@ -130,11 +132,18 @@
                             });
                         } else {
                             Swal.fire({
-                                template: '#error_template',
+                                template: '#error-template',
                                 title: "Oops!",
                                 html: response.message,
                             })
                         }
+                    },
+                    error: function(error) {
+                        Swal.fire({
+                            template: '#error-template',
+                            title: "Oops!",
+                            html: '<label style="font-size:24px; font-weight:bold">Hubo un error en la solicitud</label>',
+                        });
                     }
                 });
 

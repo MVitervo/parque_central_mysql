@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center card-body">
     <div class="col-12 col-md-6 col-lg-6" style="position: relative; bottom: 55px">
         <h4>Datos de la persona</h4>
-        <form id="formPatient">
+        <form id="formPatient" novalidate>
             <?php include ('forms/form_template.php'); ?>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="mt-3 btn btn-primary col-12 col-md-6 col-lg-6">Guardar</button>
@@ -26,7 +26,7 @@
                 event.stopPropagation();
                 $(form).addClass('was-validated');
                 Swal.fire({
-                    template: '#warning_template',
+                    template: '#warning-template',
                     title: "Campos Vacios!",
                     text: "Por favor, complete todos los campos requeridos",
                 });
@@ -48,9 +48,9 @@
                 success: function(response) {
                     if (response.status) {
                         Swal.fire({
-                            template: '#success_template',
+                            template: '#success-template',
                             title: "Transacción Realizada!",
-                            html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
+                         html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                         }).then(() => {
                             searchData();
                             $('#sectionListPatients').show();
@@ -58,7 +58,7 @@
                         });
                     } else if (response.status === false) {
                         Swal.fire({
-                            template: '#error_template',
+                            template: '#error-template',
                             title: "Oops!",
                             html: '<label style="font-size:24px; font-weigth:bolder">' + response.message + '</label>',
                         });
@@ -66,7 +66,7 @@
                 },
                 error: function(error) {
                     Swal.fire({
-                        template: '#error_template',
+                        template: '#error-template',
                         title: "Oops!",
                         html: '<label style="font-size:24px; font-weigth:bolder">Hubo un error en la solicitud</label>',
                     });
