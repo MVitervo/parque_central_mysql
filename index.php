@@ -341,6 +341,15 @@
 
     <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
+    <!-- jQuery (necesario para toastr) --> 
+    <!-- <script src="/node_modules/jquery/dist/jquery.min.js"></script> -->
+    
+    <!-- Toastr JS --> 
+    <script src="/node_modules/toastr/build/toastr.min.js"></script> 
+    
+    <!-- Toastr CSS --> 
+    <link rel="stylesheet" href="/node_modules/toastr/build/toastr.min.css">
+
     <?php include 'templates/alerts.php'; ?>
 
     <!-- Modal || BEGIN -->
@@ -409,6 +418,14 @@
         savePatient();
     });
 
+    // Configuración global
+    toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-bottom-right",
+        timeOut: "3000"
+    };
+
     function searchData() {
         $('#tableListPatients').DataTable().ajax.reload(null, false);
     }
@@ -457,21 +474,26 @@
                 success: function(response) {
                     if (response.status == true) {
                         $('.closeModal').click();
+                        /*
                         Swal.fire({
                             template: '#success-template',
                             title: "Persona registrada!",
                             html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                         }).then(() => {
-                            // $('#form_section').hide();
-                            // $('#sectionListPatients').show();
                             searchData();
                         });
+                        */
+                       toastr.success("Paciente agregado con exito!");
+                       searchData();
                     } else if (response.status == false) {
+                        /*
                         Swal.fire({
                             template: '#error-template',
                             title: "Oops!",
                             html: '<label style="font-size:24px; font-weight:bold">' + response.message + '</label>',
                         });
+                        */
+                       toastr.error(response.message);
                     }
                 },
                 error: function(error) {
