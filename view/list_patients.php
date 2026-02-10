@@ -108,8 +108,9 @@
             template: '#warning-template',
             title: "Eliminar?",
             text: "¿Estás seguro de eliminar este paciente?",
-              reverseButtons: true,
-              confirmButtonText: "Sí, eliminar",
+            reverseButtons: true,
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
             showCancelButton: true
         }).then((action) => {
             if (action.value){
@@ -121,6 +122,7 @@
                     },
                     success: function(response) {
                         if (response.status == true) {
+                            /*
                             Swal.fire({
                                 template: '#success-template',
                                 title: "Eliminado!",
@@ -130,20 +132,31 @@
                                 $('#sectionListPatients').show();
                                 searchData();
                             });
+                            */
+                            toastr.success(response.message);
+                            $('#form_section').hide();
+                            $('#sectionListPatients').show();
+                            searchData();
                         } else {
+                            /*
                             Swal.fire({
                                 template: '#error-template',
                                 title: "Oops!",
                                 html: response.message,
                             })
+                            */
+                           toastr.error(response.message);
                         }
                     },
                     error: function(error) {
+                        /*
                         Swal.fire({
                             template: '#error-template',
                             title: "Oops!",
                             html: '<label style="font-size:24px; font-weight:bold">Hubo un error en la solicitud</label>',
                         });
+                        */
+                        toastr.error('Hubo un error en la solicitud');
                     }
                 });
 

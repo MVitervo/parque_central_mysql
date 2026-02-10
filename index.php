@@ -350,6 +350,8 @@
     <!-- Toastr CSS --> 
     <link rel="stylesheet" href="/node_modules/toastr/build/toastr.min.css">
 
+    <link rel="stylesheet" href="/css/index.css">
+
     <?php include 'templates/alerts.php'; ?>
 
     <!-- Modal || BEGIN -->

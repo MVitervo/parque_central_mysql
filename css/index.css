@@ -1,0 +1,21 @@
+/* Cambiar fondo y color de texto */
+.toast-success {
+	background-color: #4caf50 !important;
+	/* verde moderno */
+	color: #fff !important;
+	font-family: "Segoe UI", Roboto, sans-serif;
+	border-radius: 8px;
+}
+
+/* Estilo para el botón de cerrar */
+.toast-close-button {
+	color: #fff !important;
+	font-size: 18px;
+}
+
+/* Barra de progreso más estilizada */
+.toast-progress {
+	background-color: rgba(0, 55, 17, 0.7);
+	height: 4px;
+	border-radius: 2px;
+}

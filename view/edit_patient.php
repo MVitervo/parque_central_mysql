@@ -47,6 +47,7 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response.status) {
+                        /*
                         Swal.fire({
                             template: '#success-template',
                             title: "Transacción Realizada!",
@@ -56,20 +57,31 @@
                             $('#sectionListPatients').show();
                             $('#sectionForm').hide();
                         });
+                        */
+                        toastr.success(response.message);
+                        searchData();
+                        $('#sectionListPatients').show();
+                        $('#sectionForm').hide();
                     } else if (response.status === false) {
+                        /*
                         Swal.fire({
                             template: '#error-template',
                             title: "Oops!",
                             html: '<label style="font-size:24px; font-weigth:bolder">' + response.message + '</label>',
                         });
+                        */
+                        toastr.error(response.message);
                     }
                 },
                 error: function(error) {
+                    /*
                     Swal.fire({
                         template: '#error-template',
                         title: "Oops!",
                         html: '<label style="font-size:24px; font-weigth:bolder">Hubo un error en la solicitud</label>',
                     });
+                    */
+                   toastr.error('Hubo un error en la solicitud');
                 }
             });
         });
